@@ -1,50 +1,131 @@
 import 'package:flutter/material.dart';
-import 'dart:convert';
-import 'package:flutter/services.dart';
-
-import 'package:flutter/material.dart';
-import 'dart:convert';
-import 'package:flutter/services.dart';
-
-import 'package:flutter/material.dart';
-
-import 'home_page.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:supabase_flutter/supabase_flutter.dart'; // Add Supabase import
+import 'membership_page.dart';
+import 'medical_insurance_page.dart';
+import 'motor_insurance_page.dart';
+import 'home_insurance_page.dart';
+import 'travel_insurance_page.dart';
 import 'emergency_assistance_page.dart';
-import 'call_us_page.dart';
 import 'profile_page.dart';
+import 'l10n/localizations.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // Initialize Supabase
+  await Supabase.initialize(
+    url: 'https://your-supabase-url.supabase.co',
+    anonKey: 'your-anon-key',
+  );
+
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class MyApp extends StatefulWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  Locale _selectedLanguageLocale = const Locale('en', 'US');
+  late SupabaseClient _supabaseClient;
+
+  @override
+  void initState() {
+    super.initState();
+
+    // Initialize Supabase client
+    _supabaseClient = Supabase.instance.client;
+  }
+
+  void _changeLanguage(Locale newLocale) {
+    setState(() {
+      _selectedLanguageLocale = newLocale;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primaryColor: Color.fromARGB(255, 45, 140, 255),
+        primaryColor: const Color.fromARGB(255, 45, 140, 255),
         primarySwatch: Colors.blue,
       ),
+      localizationsDelegates: const [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: const [
+        Locale('en', 'US'),
+        Locale('sw', 'TZ'),
+      ],
+      locale: _selectedLanguageLocale,
       initialRoute: '/',
       routes: {
-        '/': (context) => RootPage(),
-        '/home': (context) => HomePage(),
-        '/emergency_assistance': (context) => EmergencyAssistancePage(),
-        '/call_us': (context) => CallUsPage(),
-        '/profile': (context) => ProfilePage(),
+        '/': (context) => RootPage(
+              changeLanguage: _changeLanguage,
+              selectedLocale: _selectedLanguageLocale,
+              supabaseClient: _supabaseClient, // Pass Supabase client
+            ),
+        '/home': (context) => HomePage(
+              changeLanguage: _changeLanguage,
+              selectedLocale: _selectedLanguageLocale,
+              supabaseClient: _supabaseClient,
+            ),
+        '/emergency_assistance': (context) => EmergencyAssistancePage(
+              changeLanguage: _changeLanguage,
+              selectedLocale: _selectedLanguageLocale,
+              localizations: AppLocalizations.of(context)!,
+            ),
+        '/call_us': (context) => MembershipPage(
+              changeLanguage: _changeLanguage,
+              localizations: AppLocalizations.of(context)!,
+              selectedLocale: _selectedLanguageLocale,
+            ),
+        '/profile': (context) => ProfilePage(
+              changeLanguage: _changeLanguage,
+              localizations: AppLocalizations.of(context)!,
+              selectedLocale: _selectedLanguageLocale,
+              supabaseClient: _supabaseClient, // Pass Supabase client
+            ),
+        '/medical_insurance': (context) => const MedicalInsurancePage(),
+        '/motor_insurance': (context) => const MotorInsurancePage(),
+        '/home_insurance': (context) => const HomeInsurancePage(),
+        '/travel_insurance': (context) => const TravelInsurancePage(),
+      },
+      localeResolutionCallback: (deviceLocale, supportedLocales) {
+        for (var locale in supportedLocales) {
+          if (deviceLocale?.languageCode == locale.languageCode &&
+              deviceLocale?.countryCode == locale.countryCode) {
+            return deviceLocale;
+          }
+        }
+        return null;
       },
     );
   }
 }
 
 class RootPage extends StatefulWidget {
-  const RootPage({super.key});
+  final void Function(Locale) changeLanguage;
+  final Locale selectedLocale;
+  final SupabaseClient supabaseClient; // Use SupabaseClient
+
+  const RootPage({
+    Key? key,
+    required this.changeLanguage,
+    required this.selectedLocale,
+    required this.supabaseClient,
+  }) : super(key: key);
 
   @override
-  State<RootPage> createState() => _RootPageState();
+  _RootPageState createState() => _RootPageState();
 }
 
 class _RootPageState extends State<RootPage> {
@@ -64,20 +145,21 @@ class _RootPageState extends State<RootPage> {
         onPressed: () {
           debugPrint('Floating Action Button');
         },
+        backgroundColor: const Color.fromARGB(255, 48, 45, 255),
         child: const Icon(Icons.add),
-        backgroundColor: Color.fromARGB(255, 45, 140, 255),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        items: [
+        items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
           BottomNavigationBarItem(
               icon: Icon(Icons.local_hospital), label: 'Emergency Assistance'),
-          BottomNavigationBarItem(icon: Icon(Icons.call), label: 'Call Us'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.wallet_membership_rounded), label: 'Call Us'),
           BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
         ],
         currentIndex: currentPage,
         onTap: _onPageSelected,
-        selectedItemColor: Color.fromARGB(255, 45, 140, 255),
+        selectedItemColor: const Color.fromARGB(255, 48, 45, 255),
         unselectedItemColor: Colors.grey,
       ),
     );
@@ -86,13 +168,29 @@ class _RootPageState extends State<RootPage> {
   Widget _getPage(int index) {
     switch (index) {
       case 0:
-        return HomePage();
+        return HomePage(
+          changeLanguage: widget.changeLanguage,
+          selectedLocale: widget.selectedLocale,
+          supabaseClient: widget.supabaseClient,
+        );
       case 1:
-        return EmergencyAssistancePage();
+        return EmergencyAssistancePage(
+            changeLanguage: widget.changeLanguage,
+            selectedLocale: widget.selectedLocale,
+            localizations: AppLocalizations.of(context)!);
       case 2:
-        return CallUsPage();
+        return MembershipPage(
+          changeLanguage: widget.changeLanguage,
+          localizations: AppLocalizations.of(context)!,
+          selectedLocale: widget.selectedLocale,
+        );
       case 3:
-        return ProfilePage();
+        return ProfilePage(
+          changeLanguage: widget.changeLanguage,
+          localizations: AppLocalizations.of(context)!,
+          selectedLocale: widget.selectedLocale,
+          supabaseClient: widget.supabaseClient,
+        );
       default:
         return Container();
     }
@@ -100,6 +198,17 @@ class _RootPageState extends State<RootPage> {
 }
 
 class HomePage extends StatefulWidget {
+  final void Function(Locale) changeLanguage;
+  final Locale selectedLocale;
+  final SupabaseClient supabaseClient;
+
+  const HomePage({
+    Key? key,
+    required this.changeLanguage,
+    required this.selectedLocale,
+    required this.supabaseClient,
+  }) : super(key: key);
+
   @override
   _HomePageState createState() => _HomePageState();
 }
@@ -108,6 +217,7 @@ class _HomePageState extends State<HomePage> {
   String _selectedLanguage = 'en'; // Default language is English ('en')
 
   void _onLanguageChanged(String selectedLanguage) {
+    widget.changeLanguage(Locale(selectedLanguage));
     setState(() {
       _selectedLanguage = selectedLanguage;
     });
@@ -115,10 +225,12 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    AppLocalizations localizations = AppLocalizations.of(context)!;
+
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 48, 45, 255),
-        title: const Text("BodaBima"),
+        backgroundColor: const Color.fromARGB(255, 48, 45, 255),
+        title: Text(localizations.translate('app_title')!),
         actions: [
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -129,7 +241,8 @@ class _HomePageState extends State<HomePage> {
                     _onLanguageChanged('en');
                   },
                   child: Container(
-                    padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                     decoration: BoxDecoration(
                       color: _selectedLanguage == 'en'
                           ? Colors.blue
@@ -147,16 +260,17 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                 ),
-                SizedBox(width: 8),
+                const SizedBox(width: 8),
                 InkWell(
                   onTap: () {
                     _onLanguageChanged('sw');
                   },
                   child: Container(
-                    padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                     decoration: BoxDecoration(
                       color: _selectedLanguage == 'sw'
-                          ? Color.fromARGB(255, 48, 45, 255)
+                          ? const Color.fromARGB(255, 48, 45, 255)
                           : Colors.transparent,
                       borderRadius: BorderRadius.circular(16),
                     ),
@@ -176,94 +290,14 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
-      body: Padding(
+      body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              SizedBox(height: 32),
-              buildInsuranceCard(
-                title: "Medical Insurance",
-                imageAsset: "assets/medical_insurance.jpg",
-              ),
-              SizedBox(height: 16),
-              buildInsuranceCard(
-                title: "Motor Insurance",
-                imageAsset: "assets/motor_insurance.jpeg",
-              ),
-              SizedBox(height: 16),
-              buildInsuranceCard(
-                title: "Home Insurance",
-                imageAsset: "assets/home_insurance.jpg",
-              ),
-              SizedBox(height: 16),
-              buildInsuranceCard(
-                title: "Travel Insurance",
-                imageAsset: "assets/travel_insurance.jpg",
-              ),
-            ],
-          ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // Add your Supabase-driven content here.
+          ],
         ),
-      ),
-    );
-  }
-
-  Widget buildInsuranceCard(
-      {required String title, required String imageAsset}) {
-    return Card(
-      elevation: 4,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Text(
-              title,
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-              ),
-              textAlign: TextAlign.center,
-            ),
-          ),
-          SizedBox(
-            height: 150, // Set a fixed height here (adjust as needed)
-            child: GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => InsuranceDetailsPage(title: title),
-                  ),
-                );
-              },
-              child: Image.asset(
-                imageAsset,
-                fit: BoxFit.cover,
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class InsuranceDetailsPage extends StatelessWidget {
-  final String title;
-
-  const InsuranceDetailsPage({required this.title});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 48, 45, 255),
-        title: Text(title),
-      ),
-      body: Center(
-        child: Text("More Details about $title"),
       ),
     );
   }

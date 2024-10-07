@@ -44,8 +44,8 @@ class _AboutAppPageState extends State<AboutAppPage> {
               onPressed: () {},
               child: const Text('Forgot Password'),
             ),
-            Row(
-              children: const [
+            const Row(
+              children: [
                 Icon(
                   Icons.access_alarm,
                 ),
