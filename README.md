@@ -4,22 +4,22 @@
 
 ## Introduction
 
-BodaBima is a mobile application designed for booking motorcycle taxis in urban areas. It provides users with a seamless experience in booking rides, tracking drivers, and managing their profiles.
+**BodaBima** is a mobile application built with Flutter. The primary purpose of the app is to provide insurance services and information to users, specifically tailored for motorcycle taxi (boda-boda) riders. The app simplifies access to insurance policies, allows users to manage their insurance coverage, and provides up-to-date information on insurance-related services.
 
 ## Features
 
-- **User Registration**: Sign up using email or social media accounts (Google, Facebook).
-- **Ride Booking**: Easily book a ride from your current location to your desired destination.
-- **Ride Tracking**: Real-time tracking of your booked ride.
-- **Payment Integration**: Secure payment methods for a hassle-free experience.
-- **Profile Management**: Users can update their profiles, view ride history, and manage payment methods.
+- **User Registration and Login**: Easy sign-up and login options using email or social media accounts (Google, Facebook).
+- **Insurance Policies**: View, purchase, and manage various motorcycle insurance policies.
+- **Claims Management**: File claims directly through the app and track their status in real-time.
+- **Policy Renewal**: Receive notifications for upcoming policy expirations and renew directly from the app.
+- **Profile Management**: Users can update their profile, view insurance history, and manage personal details.
 
 ## Technologies Used
 
-- **Flutter**: For building a beautiful UI across platforms.
+- **Flutter**: For building the cross-platform mobile application.
 - **Supabase**: For backend services, including authentication and database management.
-- **Provider**: For state management.
-- **Google Maps API**: For location services and mapping.
+- **Provider**: For efficient state management.
+- **REST APIs**: For connecting to insurance services and policy data.
 
 ## Installation
 
@@ -45,14 +45,14 @@ To get a copy of the BodaBima app up and running on your local machine for devel
 
 ## Usage
 
-- **Registration**: Open the app and sign up using your email or social media.
-- **Booking a Ride**: Select your pickup and drop-off locations, confirm your booking, and wait for a driver.
-- **Tracking**: Once a driver is assigned, you can track their location in real-time.
-- **Payment**: Pay through the integrated payment methods upon completing your ride.
+- **Register and Log In**: Create an account using your email or log in via Google or Facebook.
+- **View Insurance Policies**: Browse through various motorcycle insurance policies tailored to your needs.
+- **File Claims**: If an accident occurs, submit your claim through the app and track its progress.
+- **Renew Policies**: Get notified before your insurance policy expires and renew it with just a few taps.
 
 ## API Reference
 
-[Add any relevant API documentation here if applicable, including authentication endpoints, ride booking endpoints, etc.]
+The app integrates with third-party insurance service providers through REST APIs to provide real-time insurance information, manage policies, and handle claims.
 
 ## Contributing
 
@@ -74,4 +74,3 @@ For inquiries, please contact:
 
 - [Jimmy James](mailto:jimmy.james365@gmail.com)
 - [GitHub Profile](https://github.com/jimmyurl)
-
