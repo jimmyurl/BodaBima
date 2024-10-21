@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 plugins {
     id "com.android.application"
     id "kotlin-android"
@@ -29,7 +28,7 @@ android {
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
-=======
+
 def localProperties = new Properties()
 def localPropertiesFile = rootProject.file('local.properties')
 if (localPropertiesFile.exists()) {
@@ -81,31 +80,30 @@ android {
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
->>>>>>> 0097b14add9085455e321c434cb17c149eae833b
+
     }
 
     buildTypes {
         release {
             // TODO: Add your own signing config for the release build.
             // Signing with the debug keys for now, so `flutter run --release` works.
-<<<<<<< HEAD
+
             signingConfig = signingConfigs.debug
-=======
+
             signingConfig signingConfigs.debug
->>>>>>> 0097b14add9085455e321c434cb17c149eae833b
+
         }
     }
 }
 
 flutter {
-<<<<<<< HEAD
+
     source = "../.."
 }
-=======
+
     source '../..'
 }
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
->>>>>>> 0097b14add9085455e321c434cb17c149eae833b

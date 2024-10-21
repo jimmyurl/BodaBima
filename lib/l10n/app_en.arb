@@ -1,6 +1,5 @@
 {
   "@@locale": "en",
-<<<<<<< HEAD
   
   "app_title": "BodaBima Insurance",
   "hero_title": "Protect What Matters Most",
@@ -41,11 +40,3 @@
     }
   }
 }
-=======
-  "app_title": "BodaBima",
-  "medical_insurance": "Medical Insurance",
-  "motor_insurance": "Motor Insurance",
-  "home_insurance": "Home Insurance",
-  "travel_insurance": "Travel Insurance"
-}
->>>>>>> 0097b14add9085455e321c434cb17c149eae833b

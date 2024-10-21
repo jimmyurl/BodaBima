@@ -17,14 +17,9 @@ class AppLocalizations {
   Map<String, String>? _localizedStrings;
 
   Future<bool> load() async {
-    // Load the localization file from the "l10n" folder.
-<<<<<<< HEAD
-    String jsonString =
-        await rootBundle.loadString('lib/l10n/app_${locale.languageCode}.arb');
-=======
+    // Load the localization file from the "assets/translations" folder.
     String jsonString = await rootBundle
         .loadString('assets/translations/app_${locale.languageCode}.arb');
->>>>>>> 0097b14add9085455e321c434cb17c149eae833b
     Map<String, dynamic> jsonMap = json.decode(jsonString);
 
     _localizedStrings = jsonMap.map((key, value) {
