@@ -1,0 +1,42 @@
+{
+  "@@locale": "en",
+  
+  "app_title": "BodaBima Insurance",
+  "hero_title": "Protect What Matters Most",
+  "hero_subtitle": "Find the perfect insurance coverage for you and your family",
+  "get_started": "Get Started",
+  "medical_insurance": "Medical Insurance",
+  "motor_insurance": "Motor Insurance",
+  "home_insurance": "Home Insurance",
+  "travel_insurance": "Travel Insurance",
+  "medical_insurance_description": "Comprehensive healthcare coverage for you and your family",
+  "motor_insurance_description": "Protect your vehicle with our comprehensive motor insurance",
+  "home_insurance_description": "Secure your home and belongings with our home insurance",
+  "travel_insurance_description": "Travel worry-free with our comprehensive travel coverage",
+  "insurance_plan_coverage": "Coverage",
+  "insurance_plan_premium": "Premium",
+  "plans_available": "{count} plans available",
+  "no_description": "No description available",
+  "error_loading": "Error loading data",
+  "try_again": "Try Again",
+
+  "emergency_services": "Emergency Services",
+  "emergency_assistance": "Emergency Assistance",
+  "call_emergency_services": "Call Emergency Services",
+  "call_local_emergency_services": "Call Local Emergency Services",
+  "request_assistance": "Request Assistance",
+  "share_live_location": "Share Live Location",
+  "first_aid_guide": "First Aid Guide",
+  "safety_tips": "Safety Tips",
+  "stay_calm": "Stay calm and assess the situation",
+  "ensure_safety": "Move to a safe location if necessary",
+  "follow_instructions": "Follow emergency personnel instructions",
+  
+  "@plans_available": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  }
+}

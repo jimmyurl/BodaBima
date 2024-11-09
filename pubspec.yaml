@@ -1,0 +1,53 @@
+name: bima
+description: "A new Flutter project."
+
+publish_to: 'none' 
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.5.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+
+  cupertino_icons: ^1.0.8
+  intl: ^0.19.0
+  supabase_flutter: ^2.8.0
+  flutter_localizations:
+    sdk: flutter
+  google_fonts: ^6.2.1
+  carousel_slider: ^5.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^4.0.0
+
+
+
+flutter:
+  uses-material-design: true
+  generate: true
+
+  assets:
+    - lib/l10n/app_en.arb
+    - lib/l10n/app_sw.arb
+  
+    - assets/icons/medical.png
+    - assets/icons/home.png
+    - assets/icons/travel.png
+    - assets/icons/call-us.png
+    - assets/icons/profile.png
+    - assets/icons/emergency.png
+    - assets/icons/logo.png
+    - assets/icons/motor.png
+    - assets/icons/car.png
+    - assets/icons/ambulance.png
+    - assets/icons/membership.png
+    - assets/images/medical.jpg
+    - assets/images/travel.jpg
+    - assets/images/car.jpg
+    - assets/images/home.png

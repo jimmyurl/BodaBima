@@ -1,0 +1,42 @@
+{
+  "@@locale": "sw",
+
+  "app_title": "Bima ya BodaBima",
+  "hero_title": "Linda Unachokithamini Zaidi",
+  "hero_subtitle": "Pata bima inayokufaa wewe na familia yako",
+  "get_started": "Anza Sasa",
+  "medical_insurance": "Bima ya Afya",
+  "motor_insurance": "Bima ya Gari",
+  "home_insurance": "Bima ya Nyumba",
+  "travel_insurance": "Bima ya Usafiri",
+  "medical_insurance_description": "Bima kamili ya afya kwako na familia yako",
+  "motor_insurance_description": "Linda gari lako na bima yetu kamili ya magari",
+  "home_insurance_description": "Linda nyumba yako na mali zako na bima yetu ya nyumba",
+  "travel_insurance_description": "Safiri bila wasiwasi na bima yetu kamili ya usafiri",
+  "insurance_plan_coverage": "Kifuniko",
+  "insurance_plan_premium": "Malipo",
+  "plans_available": "Mipango {count} inapatikana",
+  "no_description": "Hakuna maelezo yaliyopatikana",
+  "error_loading": "Hitilafu katika kupakia data",
+  "try_again": "Jaribu Tena",
+
+  "emergency_services": "Huduma za Dharura",
+  "emergency_assistance": "Msaada wa Dharura",
+  "call_emergency_services": "Piga Simu kwa Huduma za Dharura",
+  "call_local_emergency_services": "Piga Simu kwa Huduma za Dharura za Karibu",
+  "request_assistance": "Omba Msaada",
+  "share_live_location": "Shiriki Mahali Ulipo",
+  "first_aid_guide": "Mwongozo wa Huduma ya Kwanza",
+  "safety_tips": "Vidokezi vya Usalama",
+  "stay_calm": "Tulia na tathmini hali",
+  "ensure_safety": "Nenda mahali salama ikihitajika",
+  "follow_instructions": "Fuata maelekezo ya wahudumu wa dharura",
+
+  "@plans_available": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  }
+}
