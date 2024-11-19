@@ -1,23 +1,16 @@
 import 'package:flutter/material.dart';
-
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-import 'home_page.dart';
-import 'membership_page.dart';
-import 'medical_insurance_page.dart';
-import 'motor_insurance_page.dart';
-
-import 'home_insurance_page.dart';
-
-import 'travel_insurance_page.dart';
-
-import 'emergency_assistance_page.dart';
-
-import 'profile_page.dart';
-
+import './screens/membership_page.dart';
+import './screens/medical_insurance_page.dart';
+import './screens/motor_insurance_page.dart';
+import './screens/home_insurance_page.dart';
+import './screens/profile_page.dart';
+import './screens/travel_insurance_page.dart';
+import './screens/emergency_assistance_page.dart';
 import 'l10n/localizations.dart';
-
 import 'package:google_fonts/google_fonts.dart';
+import './screens/home_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

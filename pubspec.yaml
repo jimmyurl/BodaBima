@@ -19,6 +19,10 @@ dependencies:
     sdk: flutter
   google_fonts: ^6.2.1
   carousel_slider: ^5.0.0
+  video_player: ^2.9.2
+  flutter_secure_storage: ^9.2.2
+  sqflite: ^2.4.1
+  path: ^1.9.0
 
 dev_dependencies:
   flutter_test:
