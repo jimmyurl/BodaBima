@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-import 'auth_service.dart'; // Import your auth service
-import 'l10n/localizations.dart'; // Import localization support
+import '../services/auth_service.dart';
+import '../l10n/localizations.dart';
 
 class ProfilePage extends StatefulWidget {
   final void Function(Locale) changeLanguage;

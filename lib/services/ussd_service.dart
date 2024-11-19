@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class UssdService {
   static const String USSD_PREFIX = '*150*00#';

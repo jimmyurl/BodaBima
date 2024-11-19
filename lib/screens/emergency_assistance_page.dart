@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'l10n/localizations.dart';
+import '../l10n/localizations.dart';
 
 class EmergencyAssistancePage extends StatefulWidget {
   final Function(Locale) changeLanguage;
