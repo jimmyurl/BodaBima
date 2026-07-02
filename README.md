@@ -1,11 +1,14 @@
-
 # BodaBima App
 
-![BodaBima Logo](assets/icons/logo.png)
+![Flutter](https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white)
+![Dart](https://img.shields.io/badge/Dart-0175C2?style=for-the-badge&logo=dart&logoColor=white)
+![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white)
+![REST API](https://img.shields.io/badge/REST-API-FF6C37?style=for-the-badge&logo=fastapi&logoColor=white)
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)
 
 ## Introduction
 
-**BodaBima** is a mobile application built with Flutter. The primary purpose of the app is to provide insurance services and information to users, specifically tailored for motorcycle taxi (boda-boda) riders. The app simplifies access to insurance policies, allows users to manage their insurance coverage, and provides up-to-date information on insurance-related services.
+BodaBima is a mobile application built with Flutter. The primary purpose of the app is to provide insurance services and information to users, specifically tailored for motorcycle taxi (boda-boda) riders. The app simplifies access to insurance policies, allows users to manage their insurance coverage, and provides up-to-date information on insurance-related services.
 
 ## Features
 
@@ -26,23 +29,26 @@
 
 To get a copy of the BodaBima app up and running on your local machine for development and testing purposes, follow these steps:
 
-1. **Clone the repository**:
-    ```bash
-    git clone https://github.com/jimmyurl/BodaBima.git
-    cd BodaBima
-    ```
+1. Clone the repository:
 
-2. **Install Flutter**: If you haven't already, install Flutter by following the instructions on the [Flutter website](https://flutter.dev/docs/get-started/install).
+```
+git clone https://github.com/jimmyurl/BodaBima.git
+cd BodaBima
+```
 
-3. **Install Dependencies**:
-    ```bash
-    flutter pub get
-    ```
+2. Install Flutter: If you haven't already, install Flutter by following the instructions on the [Flutter website](https://flutter.dev/docs/get-started/install).
 
-4. **Run the app**:
-    ```bash
-    flutter run
-    ```
+3. Install Dependencies:
+
+```
+flutter pub get
+```
+
+4. Run the app:
+
+```
+flutter run
+```
 
 ## Usage
 
@@ -67,7 +73,7 @@ Contributions are welcome! Please follow these steps:
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/jimmyurl/BodaBima/blob/master/LICENSE) file for details.
 
 ## Contact
 
@@ -75,4 +81,3 @@ For inquiries, please contact:
 
 - [Jimmy James](mailto:jimmy.james365@gmail.com)
 - [GitHub Profile](https://github.com/jimmyurl)
-
